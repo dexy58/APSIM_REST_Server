@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +13,14 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class CultureController {
 
     @PostMapping("/getPrediction")
-    public String register(@RequestBody Culture culture) {
+    public JSONObject register(@RequestBody Culture culture) {
         System.out.println(culture.toString());
 
-        return culture.toString();
+        JSONObject requestParams = new JSONObject();
+        requestParams.put("name", "corn");
+        requestParams.put("startDate", "25-mar");
+        requestParams.put("endDate", "8-apr");
+
+        return requestParams;
     }
 }
